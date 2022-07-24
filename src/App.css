@@ -1,26 +1,70 @@
 body {
-  background-color: cadetblue;
+  background-color: rgb(247, 245, 249);
 }
 
 .listItems {
-  background-color: bisque;
+  background-color: rgb(11, 120, 204);
   list-style: none;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: .5fr .5fr;
+  grid-template-areas: 
+  "beerImg beerName foodPairing moreInfo"
+  "beerImg beerDescript beerDescript transHeart";
   justify-content: space-evenly;
   margin-bottom: 15px;
 }
 
 .beerImg {
+  grid-area: beerImg;
   height: 200px;
+  margin-top: 15px;
+  margin-left: 30vh;
+}
+
+.beerName {
+  grid-area: beerName;
+}
+
+.beerDescript {
+  grid-area: beerDescript;
+}
+
+.foodPairing {
+  grid-area: foodPairing;
+  margin-top: 15px;
+}
+
+.moreInfo {
+  grid-area: moreInfo;
+  columns: 2;
+  margin-top: 15px;
 }
 
 .transHeart {
-  height: 80px;
-  width: 85px;
+  grid-area: transHeart;
+  background-image: url('./transparentheart.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-color: white;
+  height: 90px;
+  width: 90px;
+  justify-self: flex-end;
+  margin-right: 80px;
+  border-color: rgb(11, 120, 204);
+  border-style: none;
 }
 
-.likeButton {
-  height: 84px;
-  width: 100px;
+.heart {
+  grid-area: transHeart;
+  background-image: url('./heart.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-color: white;
+  height: 90px;
+  width: 90px;
+  justify-self: flex-end;
+  margin-right: 80px;
+  border-color: rgb(11, 120, 204);
+  border-style: none;
 }

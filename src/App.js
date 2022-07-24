@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './App.css';
-import Heart from './heart.png';
-import TransHeart from './transparentheart.png'
 
 import BeerCard from './BeerCard';
 
@@ -13,7 +11,7 @@ class App extends Component {
 
     this.state = {
       arrOfBeer: [],
-      isLiked: false
+      isLiked: []
     }
   }
 
@@ -26,14 +24,13 @@ class App extends Component {
   }
 
   handleLike = (e) => {
-     if(this.state.isLiked) {
-      e.target.src = Heart
-      this.setState({isLiked: false})
-     } else {
-      e.target.src = TransHeart
-      this.setState({isLiked: true})
-     }
-     console.log(this.state.isLiked)
+    if(e.target.className == "transHeart") {
+      e.target.className = "heart"
+    } else if (e.target.className == "heart") {
+      e.target.className = "transHeart"
+    } else {
+      e.target.className = "transHeart"
+    }
   }
 
 
@@ -43,7 +40,9 @@ class App extends Component {
         <header className="App-header">
            <ol className="orderedList">{this.state.arrOfBeer.map((beer, index) => {
               return(
-                <BeerCard key={index} name={beer.name} image_url={beer.image_url} tagline={beer.tagline} first_brewed={beer.first_brewed} description={beer.description} abv={beer.abv} handleLike={this.handleLike}/>
+                <BeerCard key={index} name={beer.name} image_url={beer.image_url} tagline={beer.tagline} first_brewed={beer.first_brewed} 
+                description={beer.description} abv={beer.abv} ibu={beer.ibu} ebc={beer.ebc} srm={beer.srm} ph={beer.ph} attenuation_level={beer.attenuation_level}
+                food_pairing={beer.food_pairing} handleLike={this.handleLike}/>
               )
            })}
            </ol>
